@@ -39,8 +39,11 @@ myApp.service("nameService",function(){
 myApp.controller("mainController",['$scope','$log',"nameService",
 function($scope,$log,nameService){
    
-    $scope.name="Main";
+    $scope.name= nameService.name;
     
+    $scope.$watch("name",function(){
+       nameService.name = $scope.name; 
+    });
     
     $log.info(nameService.name);
     $log.info(nameService.nameLength());
@@ -49,10 +52,16 @@ function($scope,$log,nameService){
 
 
 
-myApp.controller("secondController",['$scope','$log','$routeParams',
-function($scope,$log,$routeParams){
+myApp.controller("secondController",['$scope','$log','$routeParams',"nameService",
+function($scope,$log,$routeParams,nameService){
    
     $scope.num= $routeParams.num || 1;
+    
+    $scope.name= nameService.name;
+    
+    $scope.$watch("name",function(){
+       nameService.name = $scope.name; 
+    });
     
     $log.second = "Property from second";
     $log.info($log);
