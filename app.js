@@ -69,4 +69,11 @@ function($scope,$log,$routeParams,nameService){
 }]);
 
 
+myApp.directive("searchResult",function(){
+    return{
+        template : '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Varun Bhandarkar</h4><p class="list-group-item-text">555 Main St., New York, NY 11111</p> </a>'
+    }
+});
+
+
 
